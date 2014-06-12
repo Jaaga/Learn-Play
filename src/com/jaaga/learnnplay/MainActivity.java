@@ -12,7 +12,8 @@ import android.widget.ImageButton;
 public class MainActivity extends Activity {
 
 	ImageButton imagebutton;
-	MediaPlayer[] media = new MediaPlayer[26];
+	MediaPlayer[] media = new MediaPlayer[52];
+	
 	private static int[] photos = new int[]{R.drawable.a,R.drawable.apple,R.drawable.b,
 		R.drawable.ball,R.drawable.c,R.drawable.cat,R.drawable.d,R.drawable.dog,R.drawable.e,
 		R.drawable.elephant,R.drawable.f,R.drawable.fan,R.drawable.g,R.drawable.goat,
@@ -24,20 +25,28 @@ public class MainActivity extends Activity {
 		R.drawable.train,R.drawable.u,R.drawable.umbrella,R.drawable.v,R.drawable.van,
 		R.drawable.w,R.drawable.watch,R.drawable.x,R.drawable.xmas,R.drawable.y,
 		R.drawable.yak,R.drawable.z,R.drawable.zebra};
+	
 	private static int click;
-	private static int[] song=new int[]{R.raw.a,R.raw.abc};
+	
+	private static int[] song = new int[]{R.raw.a,R.raw.apple,R.raw.b,R.raw.c,R.raw.d,R.raw.e,
+		R.raw.f,R.raw.g,R.raw.h,R.raw.i,R.raw.j,R.raw.k,R.raw.l,R.raw.m,R.raw.n,R.raw.o,
+		R.raw.p,R.raw.q,R.raw.r,R.raw.s,R.raw.t,R.raw.u,R.raw.v,R.raw.w,R.raw.x,R.raw.y,
+		R.raw.z};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		click=0;
-		
 		imagebutton = (ImageButton) findViewById(R.id.imageButton1);
 		
-		media[1] = MediaPlayer.create(this, song[0]);
-		media[2] = MediaPlayer.create(this, song[1]);
-		media[1].start();	
+		for(int i=0;i<27;i++)
+		{
+			media[i] = MediaPlayer.create(this, song[i]);
+		}
+		
+		media[0].start();	
+		
 		imagebutton.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
@@ -47,11 +56,12 @@ public class MainActivity extends Activity {
 				imagebutton.setImageBitmap(image);
 				if(click % 2 == 1)
 				{
-					media[1].stop();
-					media[2].start();
+					media[click-1].stop();
+					media[click].start();
 				}
 				else {
-					media[2].stop();
+					media[click-1].stop();
+					media[click].start();
 				}
 			}
 		});
