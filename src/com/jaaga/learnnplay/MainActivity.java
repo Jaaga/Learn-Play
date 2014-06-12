@@ -7,12 +7,19 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements AnimationListener {
 
 	ImageButton imagebutton;
 	MediaPlayer[] media = new MediaPlayer[52];
+	private static int click;
+	Animation animove;
+	Animation animbounce;
 	
 	private static int[] photos = new int[]{R.drawable.a,R.drawable.apple,R.drawable.b,
 		R.drawable.ball,R.drawable.c,R.drawable.cat,R.drawable.d,R.drawable.dog,R.drawable.e,
@@ -26,8 +33,6 @@ public class MainActivity extends Activity {
 		R.drawable.w,R.drawable.watch,R.drawable.x,R.drawable.xmas,R.drawable.y,
 		R.drawable.yak,R.drawable.z,R.drawable.zebra};
 	
-	private static int click;
-	
 	private static int[] song = new int[]{R.raw.a,R.raw.apple,R.raw.b,R.raw.c,R.raw.d,R.raw.e,
 		R.raw.f,R.raw.g,R.raw.h,R.raw.i,R.raw.j,R.raw.k,R.raw.l,R.raw.m,R.raw.n,R.raw.o,
 		R.raw.p,R.raw.q,R.raw.r,R.raw.s,R.raw.t,R.raw.u,R.raw.v,R.raw.w,R.raw.x,R.raw.y,
@@ -39,13 +44,19 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		click=0;
 		imagebutton = (ImageButton) findViewById(R.id.imageButton1);
+		animove = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.move);
+		animove.setAnimationListener(this);
+		
+		//animbounce = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.bounce);
+		//animbounce.setAnimationListener(this);
 		
 		for(int i=0;i<27;i++)
 		{
 			media[i] = MediaPlayer.create(this, song[i]);
 		}
-		
-		media[0].start();	
+		media[0].start();
+		imagebutton.startAnimation(animove);
+		//imagebutton.startAnimation(animbounce);
 		
 		imagebutton.setOnClickListener(new View.OnClickListener() {
 			
@@ -54,6 +65,9 @@ public class MainActivity extends Activity {
 				click++;
 				Bitmap image = BitmapFactory.decodeResource(getResources(),photos[click]);  
 				imagebutton.setImageBitmap(image);
+				imagebutton.startAnimation(animove);
+				//imagebutton.startAnimation(animbounce);
+				
 				if(click % 2 == 1)
 				{
 					media[click-1].stop();
@@ -72,6 +86,27 @@ public class MainActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+
+	@Override
+	public void onAnimationEnd(Animation animation) {
+		// TODO Auto-generated method stub
+		if (animation == animove) {
+            Toast.makeText(getApplicationContext(), "Animation Stopped",
+                    Toast.LENGTH_LONG).show();
+        }
+	}
+
+	@Override
+	public void onAnimationRepeat(Animation animation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onAnimationStart(Animation animation) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
