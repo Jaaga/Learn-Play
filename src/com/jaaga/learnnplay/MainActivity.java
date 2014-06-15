@@ -11,7 +11,6 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 public class MainActivity extends Activity implements AnimationListener {
 
@@ -68,15 +67,15 @@ public class MainActivity extends Activity implements AnimationListener {
 				Bitmap image = BitmapFactory.decodeResource(getResources(),photos[click]);  
 				imagebutton.setImageBitmap(image);
 			    				
-				if(click % 2 == 1)
+				if(click % 2 == 1 && click < 52)
 				{
 				    imagebutton.startAnimation(animbounce);
-					media[click-1].stop();
+					media[click-1].release();
 					media[click].start();
 				}
-				else {
+				else if(click % 2 == 0 && click < 52) {
 					imagebutton.startAnimation(animcomb);
-					media[click-1].stop();
+					media[click-1].release();
 					media[click].start();
 				}
 			}
