@@ -22,6 +22,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.jaaga.learnnplay.Al1"
+            android:label="@string/title_activity_alphabets_word" >
+        </activity>
+        <activity
+            android:name="com.jaaga.learnnplay.AlphabetsLevels"
+            android:label="@string/title_activity_alphabets_levels" >
+        </activity>
+        <activity
+            android:name="com.jaaga.learnnplay.NumberLevels"
+            android:label="@string/title_activity_number_levels" >
+        </activity>
+        <activity
+            android:name="com.jaaga.learnnplay.NL1"
+            android:label="@string/title_activity_numbers" >
+        </activity>
+        <activity
+            android:name="com.jaaga.learnnplay.Al2"
+            android:label="@string/title_activity_al2" >
+        </activity>
+        <activity
+            android:name="com.jaaga.learnnplay.NL2"
+            android:label="@string/title_activity_nl2" >
+        </activity>
     </application>
 
 </manifest>

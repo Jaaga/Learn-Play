@@ -6,15 +6,39 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/bg"
+    android:background="@drawable/bg2"
     tools:context=".MainActivity" >
 
-    <ImageButton
-        android:id="@+id/imageButton1"
-        android:layout_width="100dp"
-        android:layout_height="110dp"
-        android:onClick="changes"
-        android:scaleType="fitXY"
-        android:src="@drawable/a" />
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="290dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="310dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#2D8FA8"
+        android:shadowDx="20"
+        android:shadowDy="20"
+        android:shadowRadius="10"
+        android:text="Numbers"
+        android:textColor="#EFFF12"
+        android:textSize="35sp" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="290dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="164dp"
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#2D8FA8"
+        android:shadowDx="20"
+        android:shadowDy="20"
+        android:shadowRadius="10"
+        android:text="Alphabets"
+        android:textColor="#EFFF12"
+        android:textSize="35sp" />
 
 </RelativeLayout>
