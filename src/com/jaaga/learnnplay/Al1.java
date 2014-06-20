@@ -2,6 +2,7 @@ package com.jaaga.learnnplay;
 
 import android.app.Activity;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -45,6 +46,14 @@ public class Al1 extends Activity implements AnimationListener{
 			media[i] = MediaPlayer.create(this, song[i]);
 		}
 		media[0].start();
+		media[0].setOnCompletionListener(new OnCompletionListener() {
+			
+			@Override
+			public void onCompletion(MediaPlayer mp) {
+				mp.reset();
+				mp.release();
+			}
+		});
 		imagebutton.startAnimation(animcomb);
 		
 		imagebutton.setOnClickListener(new View.OnClickListener() {
@@ -56,15 +65,16 @@ public class Al1 extends Activity implements AnimationListener{
 				//imagebutton.setImageBitmap(image);
 				imagebutton.startAnimation(animcomb);
 			    				
-				if(click % 2 == 1 && click < 26)
-				{
-					media[click-1].release();
-					media[click].start();
-				}
-				else if(click % 2 == 0 && click < 26) {
-					media[click-1].release();
-					media[click].start();
-				}
+				media[click].start();
+				media[click].setOnCompletionListener(new OnCompletionListener() {
+					
+					@Override
+					public void onCompletion(MediaPlayer mp) {
+						mp.reset();
+						mp.release();
+					}
+				});
+				
 			}
 		});
 	}
