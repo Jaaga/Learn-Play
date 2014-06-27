@@ -23,31 +23,7 @@ public class NL1 extends Activity implements AnimationListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_alphabets_word);
-		click=0;
-		imagebutton = (ImageButton) findViewById(R.id.imageButton1);
-		imagebutton.setBackgroundResource(photos[click]);
-		
-		animcomb = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.comb);
-		animcomb.setAnimationListener(this);
-		
-		imagebutton.startAnimation(animcomb);
-		
-		imagebutton.setOnClickListener(new View.OnClickListener() {
-			
-			public void onClick(View v) {
-				click++;
-				if(click < 9)
-				{
-				imagebutton.setBackgroundResource(photos[click]);
-				//Bitmap image = BitmapFactory.decodeResource(getResources(),photos[click]);  
-				//imagebutton.setImageBitmap(image);
-				imagebutton.startAnimation(animcomb);
-				}
-				else{
-					click = -1;
-				}
-			}
-		});
+
 	}
 
 	@Override

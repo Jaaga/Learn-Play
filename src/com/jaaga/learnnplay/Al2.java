@@ -1,21 +1,28 @@
 package com.jaaga.learnnplay;
 
+import java.util.Random;
+
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageButton;
 
 public class Al2 extends Activity implements AnimationListener{
 
-	ImageButton imagebutton;
 	MediaPlayer[] media = new MediaPlayer[26];
-	private static int click;
-	Animation animcomb;
+	private static int click = 0;
 	
 	private static int[] photos = new int[]{R.drawable.apple,R.drawable.ball,
 		R.drawable.cat,R.drawable.dog,R.drawable.egg,R.drawable.flower,R.drawable.glasses,
@@ -31,42 +38,155 @@ public class Al2 extends Activity implements AnimationListener{
 		R.raw.quilt,R.raw.rabbit,R.raw.shoes,R.raw.truck,R.raw.umbrella,R.raw.vacuum,
 		R.raw.worm,R.raw.xylophone,R.raw.yoghurt,R.raw.zebra};
 	
+    private Bitmap mBitmap;
+	private Bitmap[] mAlpha = new Bitmap[26];
+	private int[] mAlphaHwidth = new int[26];
+	private int[] mAlphaHheight = new int[26];
+	private Bitmap mBG;
+	private Paint p;
+	private float x = 0;
+	private float y = 0;
+	private float vx = 1;
+	private float vy = 1;
+	private Canvas c;
+	private static final String TAG = "MainActivity";
+	private boolean mTouching;
+	private static int temp = 0; 
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_alphabets_word);
-		click=0;
-		imagebutton = (ImageButton) findViewById(R.id.imageButton1);
-		imagebutton.setBackgroundResource(photos[click]);
-		
-		animcomb = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.comb);
-		animcomb.setAnimationListener(this);
-		
+        
 		for(int i=0;i<26;i++)
 		{
 			media[i] = MediaPlayer.create(this, song[i]);
 		}
-		media[0].start();
-		imagebutton.startAnimation(animcomb);
+		Random rw = new Random();
+		final int rWidth = rw.nextInt(10);
 		
-		imagebutton.setOnClickListener(new View.OnClickListener() {
-			
-			public void onClick(View v) {
-				click++;
-				imagebutton.setBackgroundResource(photos[click]);
-				imagebutton.startAnimation(animcomb);
-			    				
-				if(click % 2 == 1 && click < 26)
-				{
-					media[click-1].release();
-					media[click].start();
+		Random rh = new Random();
+		final int rHeight = rh.nextInt(10);
+		
+        mBitmap = Bitmap.createBitmap(200, 200,Bitmap.Config.ARGB_8888);
+        
+        mBG = BitmapFactory.decodeResource(getResources(), R.drawable.bg);
+        for(int i=0;i<26;i++)
+		{
+        	mAlpha[i] = BitmapFactory.decodeResource(getResources(), photos[i]);
+        	mAlphaHwidth[i] = mAlpha[i].getWidth() / 2;
+            mAlphaHheight[i] = mAlpha[i].getHeight() / 2;
+		}
+        
+        c = new Canvas(mBitmap);
+        p = new Paint();
+
+        View v = new View(this){
+
+			protected void onDraw(Canvas canvas) 
+        	{	
+        		float ScaleX = this.getWidth() / ((float)mBG.getWidth());
+        		float ScaleY = this.getHeight() / ((float)mBG.getHeight());
+        		
+        		canvas.save();
+        		canvas.scale(ScaleX, ScaleY);
+        		canvas.drawBitmap(mBG, 0, 0, null);
+        		
+        		//canvas.scale(ScaleX*12, ScaleY*3);
+        		canvas.restore();
+        		
+        		float angle = SystemClock.uptimeMillis()/ 5.0f;
+        		canvas.translate(x, y);
+
+        		temp = click-1;
+        		if(mTouching){
+        			click++;
+        			canvas.rotate(angle,(float)mAlphaHheight[click],(float)mAlphaHwidth[click]);
+            		canvas.drawBitmap(mAlpha[click], 0, 0, null);
+            		media[click].start();
+            		media[click].setOnCompletionListener(new OnCompletionListener() {
+            			
+            			@Override
+            			public void onCompletion(MediaPlayer mp) {
+            				mp.reset();
+            			}
+            		});
+        		}
+        		else{
+        			canvas.rotate(angle,(float)mAlphaHheight[click],(float)mAlphaHwidth[click]);
+            		canvas.drawBitmap(mAlpha[click], 0, 0, null);
+            		media[click].start();
+            		media[click].setOnCompletionListener(new OnCompletionListener() {
+            			
+            			@Override
+            			public void onCompletion(MediaPlayer mp) {
+            				mp.reset();
+            			}
+            		});
+        		}
+        		
+        		x = x + vx;
+        		y = y + vy;
+        		
+        		if((y + 2*mAlphaHheight[0]>= this.getHeight()) ||(y <= -1))
+        		{
+        			vy = -vy;
+        		}
+        		else
+        		{
+        			if(rHeight >= 5){
+        				vy = vy + rHeight;
+        			}else if(rHeight >= 2 && rHeight < 5){
+        				vy = vy + rHeight;
+        			}else{vy = vy + 6;}
+        		}
+        		
+        		if((x + 2*mAlphaHwidth[0]>= this.getWidth()) || (x <= -1))
+        		{
+        			vx = -vx;
+        		}
+        		else
+        		{
+        			if(rWidth >= 5){
+        				vx = vx + rHeight;
+        			}else if(rWidth >= 2 && rWidth < 5){
+        				vx = vx + rWidth;
+        			}else{vx = vx + 7;}
+        		}
+        		
+        		postInvalidateDelayed(1);
+        	}
+        };
+        
+        setContentView(v);
+        v.setOnTouchListener(new OnTouchListener() {
+
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+				Log.d(TAG, "on touch!"+event);
+				int action = event.getAction();
+				if(action == MotionEvent.ACTION_DOWN){
+					mTouching = true;
 				}
-				else if(click % 2 == 0 && click < 26) {
-					media[click-1].release();
-					media[click].start();
+				if(action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL||action ==MotionEvent.ACTION_MOVE){
+					mTouching = false;
 				}
+				if(action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_MOVE){
+					x = event.getX();
+					y = event.getY();
+					vx = 0;
+					vy = 0;
+					}
+				float Scalex = mBitmap.getWidth() / (float)v.getWidth();
+		        float Scaley = mBitmap.getHeight() / (float)v.getHeight();
+		        float Pointx = event.getX() * Scalex;
+		        float Pointy = event.getY() * Scaley;
+		        p.setColor(0xff0000ff);
+		        c.drawCircle(Pointx, Pointy, 2, p);
+		        return true;
 			}
+			
 		});
+       
 	}
 
 	@Override
