@@ -4,7 +4,6 @@ import java.util.Random;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -13,16 +12,13 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 
-public class Al1 extends Activity implements AnimationListener, OnSharedPreferenceChangeListener{
+public class Al1 extends Activity{
 
 	MediaPlayer[] media = new MediaPlayer[26];
 	private static int click = 0;
@@ -68,9 +64,6 @@ public class Al1 extends Activity implements AnimationListener, OnSharedPreferen
 		Random rh = new Random();
 		final int rHeight = rh.nextInt(10);
 		
-		mprefs = PreferenceManager.getDefaultSharedPreferences(this);
-		mprefs.registerOnSharedPreferenceChangeListener(this);
-		onSharedPreferenceChanged(null, null);
         mBitmap = Bitmap.createBitmap(200, 200,Bitmap.Config.ARGB_8888);
         
         mBG = BitmapFactory.decodeResource(getResources(), R.drawable.bg);
@@ -107,12 +100,14 @@ public class Al1 extends Activity implements AnimationListener, OnSharedPreferen
         			canvas.rotate(angle,(float)mAlphaHheight[click],(float)mAlphaHwidth[click]);
             		canvas.drawBitmap(mAlpha[click], 0, 0, null);
             		
+
             		media[click].start();
             		media[click].setOnCompletionListener(new OnCompletionListener() {
             			
             			@Override
             			public void onCompletion(MediaPlayer mp) {
             				mp.reset();
+            				mp.start();
             			}
             		});
         		}
@@ -126,6 +121,7 @@ public class Al1 extends Activity implements AnimationListener, OnSharedPreferen
             			@Override
             			public void onCompletion(MediaPlayer mp) {
             				mp.reset();
+            				mp.start();
             			}
             		});
         		}
@@ -201,29 +197,4 @@ public class Al1 extends Activity implements AnimationListener, OnSharedPreferen
 		getMenuInflater().inflate(R.menu.alphabets_word, menu);
 		return true;
 	}
-
-	@Override
-	public void onAnimationEnd(Animation arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onAnimationRepeat(Animation arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onAnimationStart(Animation arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onSharedPreferenceChanged(SharedPreferences arg0, String arg1) {
-		boolean mEnableGravity = mprefs.getBoolean("gravity", true);
-		
-	}
-
 }
