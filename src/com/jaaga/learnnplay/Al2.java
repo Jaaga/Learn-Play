@@ -7,19 +7,19 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
 
-public class Al2 extends Activity implements AnimationListener{
+public class Al2 extends Activity{
 
 	MediaPlayer[] media = new MediaPlayer[26];
 	private static int click = 0;
@@ -50,8 +50,7 @@ public class Al2 extends Activity implements AnimationListener{
 	private float vy = 1;
 	private Canvas c;
 	private static final String TAG = "MainActivity";
-	private boolean mTouching;
-	private static int temp = 0; 
+	private boolean mTouching; 
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +66,13 @@ public class Al2 extends Activity implements AnimationListener{
 		Random rh = new Random();
 		final int rHeight = rh.nextInt(10);
 		
-        mBitmap = Bitmap.createBitmap(200, 200,Bitmap.Config.ARGB_8888);
+		Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        final int width = size.x;
+        final int height = size.y;
+		
+        mBitmap = Bitmap.createBitmap(width, height,Bitmap.Config.ARGB_8888);
         
         mBG = BitmapFactory.decodeResource(getResources(), R.drawable.bg);
         for(int i=0;i<26;i++)
@@ -91,13 +96,11 @@ public class Al2 extends Activity implements AnimationListener{
         		canvas.scale(ScaleX, ScaleY);
         		canvas.drawBitmap(mBG, 0, 0, null);
         		
-        		//canvas.scale(ScaleX*12, ScaleY*3);
         		canvas.restore();
         		
         		float angle = SystemClock.uptimeMillis()/ 5.0f;
         		canvas.translate(x, y);
 
-        		temp = click-1;
         		if(mTouching){
         			click++;
         			canvas.rotate(angle,(float)mAlphaHheight[click],(float)mAlphaHwidth[click]);
@@ -107,6 +110,7 @@ public class Al2 extends Activity implements AnimationListener{
             			
             			@Override
             			public void onCompletion(MediaPlayer mp) {
+            				mp.release();
             				mp.reset();
             			}
             		});
@@ -153,7 +157,7 @@ public class Al2 extends Activity implements AnimationListener{
         			}else{vx = vx + 7;}
         		}
         		
-        		postInvalidateDelayed(1);
+        		postInvalidateDelayed(0);
         	}
         };
         
@@ -162,6 +166,7 @@ public class Al2 extends Activity implements AnimationListener{
 
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
+				
 				Log.d(TAG, "on touch!"+event);
 				int action = event.getAction();
 				if(action == MotionEvent.ACTION_DOWN){
@@ -176,12 +181,7 @@ public class Al2 extends Activity implements AnimationListener{
 					vx = 0;
 					vy = 0;
 					}
-				float Scalex = mBitmap.getWidth() / (float)v.getWidth();
-		        float Scaley = mBitmap.getHeight() / (float)v.getHeight();
-		        float Pointx = event.getX() * Scalex;
-		        float Pointy = event.getY() * Scaley;
-		        p.setColor(0xff0000ff);
-		        c.drawCircle(Pointx, Pointy, 2, p);
+				
 		        return true;
 			}
 			
@@ -196,22 +196,6 @@ public class Al2 extends Activity implements AnimationListener{
 		return true;
 	}
 
-	@Override
-	public void onAnimationEnd(Animation arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void onAnimationRepeat(Animation arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onAnimationStart(Animation arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

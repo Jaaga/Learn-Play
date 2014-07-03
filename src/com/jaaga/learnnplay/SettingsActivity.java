@@ -16,15 +16,19 @@ public class SettingsActivity extends PreferenceActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB) {
 			oldDevices();
-		} else {
+		} 
+		else {
 			showpreferencesFragmentStyle(savedInstanceState);
 		}
 	}
 
 	private void showpreferencesFragmentStyle(Bundle savedInstanceState) {
-		if (savedInstanceState == null) {
+		
+		if (savedInstanceState == null) 
+		{
 			FragmentTransaction trans = getFragmentManager().beginTransaction();
 			Fragment fragment = new MyPreferencesFragment();
 			trans.replace(android.R.id.content, fragment);

@@ -18,6 +18,11 @@ public final class R {
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
 
+         Example customization of dimensions originally defined in res/values/dimens.xml
+         (such as screen margins) for screens with more than 820dp of available width. This
+         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
+    
+
          Customize dimensions originally defined in res/values/dimens.xml (such as
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
@@ -107,6 +112,7 @@ public final class R {
         public static final int activity_main=0x7f030002;
         public static final int activity_number_levels=0x7f030003;
         public static final int activity_numbers=0x7f030004;
+        public static final int activity_paint_me=0x7f030005;
     }
     public static final class menu {
         public static final int al2=0x7f0a0000;
@@ -116,6 +122,7 @@ public final class R {
         public static final int nl2=0x7f0a0004;
         public static final int number_levels=0x7f0a0005;
         public static final int numbers=0x7f0a0006;
+        public static final int paint_me=0x7f0a0007;
     }
     public static final class raw {
         public static final int a=0x7f060000;
@@ -181,6 +188,7 @@ public final class R {
         public static final int title_activity_nl2=0x7f080008;
         public static final int title_activity_number_levels=0x7f080005;
         public static final int title_activity_numbers=0x7f080006;
+        public static final int title_activity_paint_me=0x7f080009;
     }
     public static final class style {
         /** 

@@ -3,16 +3,17 @@ package com.jaaga.learnnplay;
 import java.util.Random;
 
 import android.app.Activity;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
@@ -48,7 +49,6 @@ public class Al1 extends Activity{
 	private Canvas c;
 	private static final String TAG = "MainActivity";
 	private boolean mTouching;
-	private SharedPreferences mprefs;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,13 @@ public class Al1 extends Activity{
 		Random rh = new Random();
 		final int rHeight = rh.nextInt(10);
 		
-        mBitmap = Bitmap.createBitmap(200, 200,Bitmap.Config.ARGB_8888);
+		Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        final int width = size.x;
+        final int height = size.y;
+		
+        mBitmap = Bitmap.createBitmap(width, height,Bitmap.Config.ARGB_8888);
         
         mBG = BitmapFactory.decodeResource(getResources(), R.drawable.bg);
         for(int i=0;i<26;i++)
@@ -88,7 +94,6 @@ public class Al1 extends Activity{
         		canvas.scale(ScaleX, ScaleY);
         		canvas.drawBitmap(mBG, 0, 0, null);
         		
-        		//canvas.scale(ScaleX*12, ScaleY*3);
         		canvas.restore();
         		
         		float angle = SystemClock.uptimeMillis()/ 5.0f;
@@ -106,8 +111,8 @@ public class Al1 extends Activity{
             			
             			@Override
             			public void onCompletion(MediaPlayer mp) {
+            				mp.release();
             				mp.reset();
-            				mp.start();
             			}
             		});
         		}
@@ -120,8 +125,8 @@ public class Al1 extends Activity{
             			
             			@Override
             			public void onCompletion(MediaPlayer mp) {
+            				
             				mp.reset();
-            				mp.start();
             			}
             		});
         		}
@@ -155,7 +160,7 @@ public class Al1 extends Activity{
         			}else{vx = vx + 7;}
         		}
         		
-        		postInvalidateDelayed(1);
+        		postInvalidateDelayed(0);
         	}
         };
         
@@ -178,12 +183,7 @@ public class Al1 extends Activity{
 					vx = 0;
 					vy = 0;
 					}
-				float Scalex = mBitmap.getWidth() / (float)v.getWidth();
-		        float Scaley = mBitmap.getHeight() / (float)v.getHeight();
-		        float Pointx = event.getX() * Scalex;
-		        float Pointy = event.getY() * Scaley;
-		        p.setColor(0xff0000ff);
-		        c.drawCircle(Pointx, Pointy, 2, p);
+				
 		        return true;
 			}
 			

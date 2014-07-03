@@ -14,6 +14,7 @@ public class AlphabetsLevels extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_alphabets_levels);
+		
 		Button l1 = (Button) findViewById(R.id.button1);
 		l1.setOnClickListener(new OnClickListener() {
 			

@@ -37,22 +37,6 @@
         android:shadowDx="20"
         android:shadowDy="20"
         android:shadowRadius="20"
-        android:text="10 - 19"
-        android:textColor="#EFFF12"
-        android:textSize="35sp" />
-
-    <Button
-        android:id="@+id/Button01"
-        android:layout_width="290dp"
-        android:layout_height="70dp"
-        android:layout_alignLeft="@+id/Button02"
-        android:layout_below="@+id/Button02"
-        android:layout_marginTop="52dp"
-        android:background="@drawable/buttonshape"
-        android:shadowColor="#2D8FA8"
-        android:shadowDx="20"
-        android:shadowDy="20"
-        android:shadowRadius="20"
         android:text="Lock"
         android:textColor="#EFFF12"
         android:textSize="35sp" />

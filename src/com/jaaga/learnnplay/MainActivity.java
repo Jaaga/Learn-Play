@@ -16,8 +16,10 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
 		Button alpha = (Button) findViewById(R.id.button1);
 		Button num = (Button) findViewById(R.id.button2);
+		Button paintme = (Button) findViewById(R.id.Button01);
 		
 		alpha.setOnClickListener(new OnClickListener() {
 			
@@ -38,6 +40,17 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+		
+		paintme.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent();
+				intent.setClass(getApplicationContext(), PaintMe.class);
+				startActivity(intent);
+			}
+		});
+		
     }
 
 	@Override

@@ -15,7 +15,9 @@
         android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         <activity
             android:name="com.jaaga.learnnplay.MainActivity"
-            android:label="@string/app_name" android:screenOrientation="portrait" android:theme="@style/AppTheme">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,31 +26,42 @@
         </activity>
         <activity
             android:name="com.jaaga.learnnplay.Al1"
-            android:label="@string/title_activity_alphabets_word" android:screenOrientation="portrait">
+            android:label="@string/title_activity_alphabets_word"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.jaaga.learnnplay.AlphabetsLevels"
-            android:label="@string/title_activity_alphabets_levels" android:screenOrientation="portrait" >
+            android:label="@string/title_activity_alphabets_levels"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.jaaga.learnnplay.NumberLevels"
-            android:label="@string/title_activity_number_levels" android:screenOrientation="portrait" >
+            android:label="@string/title_activity_number_levels"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.jaaga.learnnplay.NL1"
-            android:label="@string/title_activity_numbers" android:screenOrientation="portrait">
+            android:label="@string/title_activity_numbers"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.jaaga.learnnplay.Al2"
-            android:label="@string/title_activity_al2" android:screenOrientation="portrait">
+            android:label="@string/title_activity_al2"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.jaaga.learnnplay.NL2"
-            android:label="@string/title_activity_nl2" android:screenOrientation="portrait">
+            android:label="@string/title_activity_nl2"
+            android:screenOrientation="portrait" >
         </activity>
-        <activity 
+        <activity
             android:name="com.jaaga.learnnplay.SettingsActivity"
             android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.jaaga.learnnplay.PaintMe"
+            android:label="@string/title_activity_paint_me"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 
