@@ -2,59 +2,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/bg2"
     tools:context=".MainActivity" >
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="290dp"
-        android:layout_height="60dp"
-        android:layout_below="@+id/button1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="64dp"
-        android:background="@drawable/buttonshape"
-        android:shadowColor="#2D8FA8"
-        android:shadowDx="20"
-        android:shadowDy="20"
-        android:shadowRadius="10"
-        android:text="Numbers"
-        android:textColor="#EFFF12"
-        android:textSize="35sp" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="290dp"
-        android:layout_height="60dp"
-        android:layout_alignLeft="@+id/button2"
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="210dp"
+        android:layout_height="150dp"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="90dp"
-        android:background="@drawable/buttonshape"
-        android:shadowColor="#2D8FA8"
-        android:shadowDx="20"
-        android:shadowDy="20"
-        android:shadowRadius="10"
-        android:text="Alphabets"
-        android:textColor="#EFFF12"
-        android:textSize="35sp" />
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/alphabets" />
 
-    <Button
-        android:id="@+id/Button01"
-        android:layout_width="290dp"
-        android:layout_height="60dp"
-        android:layout_alignLeft="@+id/button2"
-        android:layout_below="@+id/button2"
-        android:layout_marginTop="73dp"
-        android:background="@drawable/buttonshape"
-        android:shadowColor="#2D8FA8"
-        android:shadowDx="20"
-        android:shadowDy="20"
-        android:shadowRadius="10"
-        android:text="Paint Me"
-        android:textColor="#EFFF12"
-        android:textSize="35sp" />
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="210dp"
+        android:layout_height="150dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/imageButton1"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/numbers" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="210dp"
+        android:layout_height="150dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/imageButton2"
+        android:layout_marginTop="13dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/paint" />
 
 </RelativeLayout>

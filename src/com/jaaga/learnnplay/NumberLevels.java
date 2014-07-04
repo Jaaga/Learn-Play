@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class NumberLevels extends Activity {
 
@@ -15,7 +16,7 @@ public class NumberLevels extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_number_levels);
 		
-		Button l1 = (Button) findViewById(R.id.button1);
+		ImageButton l1 = (ImageButton) findViewById(R.id.ImageButton1);
 		l1.setOnClickListener(new OnClickListener() {
 			
 			@Override

@@ -7,54 +7,37 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".AlphabetsLevels"
-    android:background="@drawable/bg" >
+    android:background="@drawable/bg2" >
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="290dp"
-        android:layout_height="70dp"
+    <ImageButton
+        android:id="@+id/ImageButton1"
+        android:layout_width="220dp"
+        android:layout_height="150dp"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/buttonshape"
-        android:shadowColor="#2D8FA8"
-        android:shadowDx="20"
-        android:shadowDy="20"
-        android:shadowRadius="20"
-        android:text="Level 1"
-        android:textColor="#EFFF12"
-        android:textSize="35sp" />
+        android:scaleType="fitXY"
+        android:src="@drawable/level1"
+        android:background="@null" />
 
-    <Button
-        android:id="@+id/Button01"
-        android:layout_width="290dp"
-        android:layout_height="70dp"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_below="@+id/button1"
-        android:layout_marginTop="56dp"
-        android:background="@drawable/buttonshape"
-        android:shadowColor="#2D8FA8"
-        android:shadowDx="20"
-        android:shadowDy="20"
-        android:shadowRadius="20"
-        android:text="Level 2"
-        android:textColor="#EFFF12"
-        android:textSize="35sp" />
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="220dp"
+        android:layout_height="150dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/ImageButton1"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/level2" />
 
-    <Button
-        android:id="@+id/Button02"
-        android:layout_width="290dp"
-        android:layout_height="70dp"
-        android:layout_alignLeft="@+id/Button01"
-        android:layout_below="@+id/Button01"
-        android:layout_marginTop="58dp"
-        android:background="@drawable/buttonshape"
-        android:shadowColor="#2D8FA8"
-        android:shadowDx="20"
-        android:shadowDy="20"
-        android:shadowRadius="20"
-        android:text="Lock"
-        android:textColor="#EFFF12"
-        android:textSize="35sp" />
+    <ImageButton
+        android:id="@+id/ImageButton3"
+        android:layout_width="220dp"
+        android:layout_height="150dp"
+        android:layout_alignLeft="@+id/ImageButton1"
+        android:layout_below="@+id/imageButton2"
+        android:layout_marginTop="20dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/lock" />
 
 </RelativeLayout>

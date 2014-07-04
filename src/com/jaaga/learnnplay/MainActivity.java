@@ -7,22 +7,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MainActivity extends Activity {
-
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		Button alpha = (Button) findViewById(R.id.button1);
-		Button num = (Button) findViewById(R.id.button2);
-		Button paintme = (Button) findViewById(R.id.Button01);
-		
-		alpha.setOnClickListener(new OnClickListener() {
-			
+
+		ImageButton alphabets = (ImageButton) findViewById(R.id.imageButton1);
+		ImageButton numbers = (ImageButton) findViewById(R.id.imageButton2);
+		ImageButton paint = (ImageButton) findViewById(R.id.imageButton3);
+
+		alphabets.setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
@@ -30,9 +29,9 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 			}
 		});
-		
-		num.setOnClickListener(new OnClickListener() {
-			
+
+		numbers.setOnClickListener(new OnClickListener() {
+
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
@@ -40,18 +39,18 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 			}
 		});
-		
-		paintme.setOnClickListener(new OnClickListener() {
-			
+
+		paint.setOnClickListener(new OnClickListener() {
+
 			@Override
-			public void onClick(View arg0) {
+			public void onClick(View v) {
 				Intent intent = new Intent();
 				intent.setClass(getApplicationContext(), PaintMe.class);
 				startActivity(intent);
 			}
 		});
-		
-    }
+
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -59,16 +58,16 @@ public class MainActivity extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
-        if (id == R.id.action_settings) {
-        	Intent i = new Intent(this,SettingsActivity.class);
-        	startActivity(i);
-            return true;
-        }
+		if (id == R.id.action_settings) {
+			Intent i = new Intent(this, SettingsActivity.class);
+			startActivity(i);
+			return true;
+		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 }
