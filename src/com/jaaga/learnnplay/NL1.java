@@ -24,9 +24,9 @@ public class NL1 extends Activity{
 	MediaPlayer[] media = new MediaPlayer[10];
 	private static int click = 0;
 	
-	private static int[] photos = new int[]{R.drawable.n0,R.drawable.n1,
+	private static int[] photos = new int[]{R.drawable.n1,
 		R.drawable.n2,R.drawable.n3,R.drawable.n4,R.drawable.n5,R.drawable.n6,
-		R.drawable.n7,R.drawable.n8,R.drawable.n9};
+		R.drawable.n7,R.drawable.n8,R.drawable.n9,R.drawable.n10};
 	
 	private static int[] song = new int[]{R.raw.a,R.raw.b,R.raw.c,R.raw.d,R.raw.e,
 		R.raw.f,R.raw.g,R.raw.h,R.raw.i,R.raw.j};
@@ -135,7 +135,7 @@ public class NL1 extends Activity{
         				vy = vy + rHeight;
         			}else if(rHeight >= 2 && rHeight < 5){
         				vy = vy + rHeight;
-        			}else{vy = vy + 6;}
+        			}else{vy = vy + 2;}
         		}
         		
         		if((x + 2*mAlphaHwidth[0]>= this.getWidth()) || (x <= -1))
@@ -148,7 +148,7 @@ public class NL1 extends Activity{
         				vx = vx + rHeight;
         			}else if(rWidth >= 2 && rWidth < 5){
         				vx = vx + rWidth;
-        			}else{vx = vx + 7;}
+        			}else{vx = vx + 4;}
         		}
         		
         		postInvalidateDelayed(1);

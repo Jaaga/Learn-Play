@@ -56,7 +56,9 @@ public class PaintMe extends Activity {
 
 			@Override
 			public void onShake() {
+				
 				c.drawColor(0, Mode.CLEAR);
+				p.reset();
 				c.drawText(mAlphaName, width / 5, height / 1.7f, p);
 			}
 		});
@@ -66,12 +68,17 @@ public class PaintMe extends Activity {
 			protected void onDraw(Canvas canvas) {
 				canvas.drawBitmap(mBitmap, 0, 0, null);
 
+				setFocusable(true);
+				setFocusableInTouchMode(true);
+	
 			    p.setTextSize(60);
 				p.setColor(0xff000000);
 				canvas.drawText("Shake to Clear", width/3.5f, 50, p);
 			
-				p.setColor(0xff0000ff);
-				p.setTextSize(width / 1.2f);
+				p.setStyle(Paint.Style.STROKE);
+				p.setStrokeWidth(4);
+				p.setColor(0xff000000);
+				p.setTextSize(height / 2f);
 				canvas.drawText(mAlphaName, width / 5, height / 1.7f, p);
 				
 				postInvalidateDelayed(0);
@@ -87,9 +94,10 @@ public class PaintMe extends Activity {
 				float Pointx = event.getX();
 				float Pointy = event.getY();
 
+				p.reset();
 				p.setColor(0xff0000ff);
-				c.drawCircle(Pointx, Pointy, 10, p);
-
+				c.drawCircle(Pointx, Pointy, 15, p);
+                
 				return true;
 			}
 		});
@@ -120,7 +128,7 @@ public class PaintMe extends Activity {
 	private void alertdialog() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("Set the Alphabet/Number");
-		builder.setMessage("Enter the name of Alphabet/Number to displayed");
+		builder.setMessage("Enter the Alphabet/Number to be displayed");
 		final EditText input = new EditText(this);
 		input.setInputType(InputType.TYPE_CLASS_TEXT);
 		builder.setView(input);

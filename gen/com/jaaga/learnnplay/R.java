@@ -66,8 +66,8 @@ public final class R {
         public static final int m=0x7f020020;
         public static final int milk=0x7f020021;
         public static final int n=0x7f020022;
-        public static final int n0=0x7f020023;
-        public static final int n1=0x7f020024;
+        public static final int n1=0x7f020023;
+        public static final int n10=0x7f020024;
         public static final int n2=0x7f020025;
         public static final int n3=0x7f020026;
         public static final int n4=0x7f020027;

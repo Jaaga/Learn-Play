@@ -131,7 +131,7 @@ public class Al2 extends Activity{
         		x = x + vx;
         		y = y + vy;
         		
-        		if((y + 2*mAlphaHheight[0]>= this.getHeight()) ||(y <= -1))
+        		if((y + 2*mAlphaHheight[0] -1 >= this.getHeight()) ||(y <= -1))
         		{
         			vy = -vy;
         		}
@@ -141,10 +141,10 @@ public class Al2 extends Activity{
         				vy = vy + rHeight;
         			}else if(rHeight >= 2 && rHeight < 5){
         				vy = vy + rHeight;
-        			}else{vy = vy + 6;}
+        			}else{vy = vy + 2;}
         		}
         		
-        		if((x + 2*mAlphaHwidth[0]>= this.getWidth()) || (x <= -1))
+        		if((x + 2*mAlphaHwidth[0] + 1 >= this.getWidth()) || (x <= -1))
         		{
         			vx = -vx;
         		}
@@ -154,7 +154,7 @@ public class Al2 extends Activity{
         				vx = vx + rHeight;
         			}else if(rWidth >= 2 && rWidth < 5){
         				vx = vx + rWidth;
-        			}else{vx = vx + 7;}
+        			}else{vx = vx + 4;}
         		}
         		
         		postInvalidateDelayed(0);
@@ -175,12 +175,6 @@ public class Al2 extends Activity{
 				if(action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL||action ==MotionEvent.ACTION_MOVE){
 					mTouching = false;
 				}
-				if(action == MotionEvent.ACTION_DOWN || action == MotionEvent.ACTION_MOVE){
-					x = event.getX();
-					y = event.getY();
-					vx = 0;
-					vy = 0;
-					}
 				
 		        return true;
 			}
