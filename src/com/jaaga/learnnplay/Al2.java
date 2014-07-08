@@ -190,6 +190,13 @@ public class Al2 extends Activity{
 	}
 
 	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		finish();
+	}
+	
+	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.alphabets_word, menu);

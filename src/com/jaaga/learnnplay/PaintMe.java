@@ -3,7 +3,6 @@ package com.jaaga.learnnplay;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -37,8 +36,6 @@ public class PaintMe extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		
-
 		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		mAccelerometer = mSensorManager
 				.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -61,7 +58,6 @@ public class PaintMe extends Activity {
 			public void onShake() {
 				c.drawColor(0, Mode.CLEAR);
 				c.drawText(mAlphaName, width / 5, height / 1.7f, p);
-				Log.d(TAG, "shake");
 			}
 		});
 
@@ -114,6 +110,13 @@ public class PaintMe extends Activity {
 		mSensorManager.unregisterListener(mShakeDetector);
 	}
 
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+		finish();
+		
+	}
 	private void alertdialog() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("Set the Alphabet/Number");
