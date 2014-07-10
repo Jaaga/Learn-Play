@@ -39,7 +39,7 @@ public class PaintMe extends Activity {
 		mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
 		mAccelerometer = mSensorManager
 				.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-		
+
 		alertdialog();
 
 		Display display = getWindowManager().getDefaultDisplay();
@@ -51,12 +51,12 @@ public class PaintMe extends Activity {
 		mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 		c = new Canvas(mBitmap);
 		p = new Paint();
-		
+
 		mShakeDetector = new ShakeDetector(new OnShakeListener() {
 
 			@Override
 			public void onShake() {
-				
+
 				c.drawColor(0, Mode.CLEAR);
 				p.reset();
 				c.drawText(mAlphaName, width / 5, height / 1.7f, p);
@@ -70,17 +70,17 @@ public class PaintMe extends Activity {
 
 				setFocusable(true);
 				setFocusableInTouchMode(true);
-	
-			    p.setTextSize(60);
+
+				p.setTextSize(60);
 				p.setColor(0xff000000);
-				canvas.drawText("Shake to Clear", width/3.5f, 50, p);
-			
+				canvas.drawText("Shake to Clear", width / 3.5f, 50, p);
+
 				p.setStyle(Paint.Style.STROKE);
 				p.setStrokeWidth(4);
 				p.setColor(0xff000000);
 				p.setTextSize(height / 2f);
 				canvas.drawText(mAlphaName, width / 5, height / 1.7f, p);
-				
+
 				postInvalidateDelayed(0);
 			}
 		};
@@ -97,20 +97,21 @@ public class PaintMe extends Activity {
 				p.reset();
 				p.setColor(0xff0000ff);
 				c.drawCircle(Pointx, Pointy, 15, p);
-                
+
 				return true;
 			}
 		});
 	}
-	
+
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		mSensorManager.registerListener(mShakeDetector, mAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-        
+		mSensorManager.registerListener(mShakeDetector, mAccelerometer,
+				SensorManager.SENSOR_DELAY_NORMAL);
+
 	}
-	
+
 	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub
@@ -123,8 +124,9 @@ public class PaintMe extends Activity {
 		// TODO Auto-generated method stub
 		super.onBackPressed();
 		finish();
-		
+
 	}
+
 	private void alertdialog() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("Set the Alphabet/Number");
