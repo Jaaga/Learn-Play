@@ -14,7 +14,7 @@
         android:layout_marginRight="71dp"
         android:background="@null"
         android:scaleType="fitXY"
-        android:src="@drawable/level2" />
+        android:src="@drawable/lock" />
 
     <ImageButton
         android:id="@+id/ImageButton3"

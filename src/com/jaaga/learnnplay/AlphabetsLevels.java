@@ -28,7 +28,7 @@ public class AlphabetsLevels extends Activity {
 			}
 		});
 		
-		l2.setOnClickListener(new OnClickListener() {
+		/*l2.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -36,7 +36,7 @@ public class AlphabetsLevels extends Activity {
 				intent.setClass(getApplicationContext(), Al2.class);
 				startActivity(intent);
 			}
-		});
+		});*/
 	}
 
 	@Override

@@ -27,7 +27,7 @@
         android:layout_below="@+id/ImageButton1"
         android:background="@null"
         android:scaleType="fitXY"
-        android:src="@drawable/level2" />
+        android:src="@drawable/lock" />
 
     <ImageButton
         android:id="@+id/ImageButton3"

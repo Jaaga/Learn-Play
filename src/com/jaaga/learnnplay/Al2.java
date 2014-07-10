@@ -144,12 +144,12 @@ public class Al2 extends Activity {
 				if ((y + 2 * mAlphaHheight[0] - 1 >= this.getHeight())
 						|| (y <= -1)) {
 					vy = -vy;
-				} else {vy = vy + rHeight * 0.3f;}
+				} else {vy = vy + rHeight * 0.4f;}
 
 				if ((x + 2 * mAlphaHwidth[0] + 1 >= this.getWidth())
 						|| (x <= -1)) {
 					vx = -vx;
-				} else {vx = vx + rWidth *0.4f;}
+				} else {vx = vx + rWidth *0.5f;}
 
 				postInvalidateDelayed(2);
 			}

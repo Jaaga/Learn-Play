@@ -12,12 +12,15 @@ import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.support.v4.view.MotionEventCompat;
 import android.util.Log;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class Al1 extends Activity {
 
@@ -51,13 +54,16 @@ public class Al1 extends Activity {
 	private Canvas c;
 	private static final String TAG = "MainActivity";
 	private boolean mTouching;
+	private Button btn;
 	private static int next = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		Toast.makeText(this, "Tab to screen 3 times for next Alphabet", Toast.LENGTH_SHORT).show();
 		media[click] = MediaPlayer.create(this, song[click]);
+		btn = new Button(this);
 
 		Display display = getWindowManager().getDefaultDisplay();
 		Point size = new Point();
@@ -87,13 +93,16 @@ public class Al1 extends Activity {
 				canvas.scale(ScaleX, ScaleY);
 				canvas.drawBitmap(mBG, 0, 0, null);
 
+				btn.draw(canvas);
 				canvas.restore();
 
 				canvas.translate(x, y);
 
-				if (mTouching && (next % 5 == 0)) {
+				if (mTouching && (next % 3 == 0)) {
 					vx = 1;
 					vy = 1;
+					x = 0;
+					y = 0;
 					media[click].stop();
 					media[click].release();
 					click++;
@@ -143,12 +152,12 @@ public class Al1 extends Activity {
 				if ((y + 2 * mAlphaHheight[0] - 1 >= this.getHeight())
 						|| (y <= -1)) {
 					vy = -vy;
-				} else {vy = vy + rHeight *0.3f;}
+				} else {vy = vy + rHeight *0.4f;}
 
 				if ((x + 2 * mAlphaHwidth[0] + 1 >= this.getWidth())
 						|| (x <= -1)) {
 					vx = -vx;
-				} else {vx = vx + rWidth *0.4f;}
+				} else {vx = vx + rWidth *0.5f;}
 
 				postInvalidateDelayed(2);
 			}
@@ -159,7 +168,6 @@ public class Al1 extends Activity {
 
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
-				Log.d(TAG, "on touch!" + event);
 				int action = event.getAction();
 				if (action == MotionEvent.ACTION_DOWN) {
 					mTouching = true;

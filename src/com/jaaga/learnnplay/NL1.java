@@ -20,15 +20,11 @@ import android.view.View.OnTouchListener;
 
 public class NL1 extends Activity {
 
-	MediaPlayer[] media = new MediaPlayer[10];
 	private static int click = 0;
 
 	private static int[] photos = new int[] { R.drawable.n1, R.drawable.n2,
 			R.drawable.n3, R.drawable.n4, R.drawable.n5, R.drawable.n6,
 			R.drawable.n7, R.drawable.n8, R.drawable.n9, R.drawable.n10 };
-
-	private static int[] song = new int[] { R.raw.a, R.raw.b, R.raw.c, R.raw.d,
-			R.raw.e, R.raw.f, R.raw.g, R.raw.h, R.raw.i, R.raw.j };
 
 	private Bitmap mBitmap;
 	private Bitmap[] mAlpha = new Bitmap[10];
@@ -49,7 +45,7 @@ public class NL1 extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		media[click] = MediaPlayer.create(this, song[click]);
+		//media[click] = MediaPlayer.create(this, song[click]);
 
 		Display display = getWindowManager().getDefaultDisplay();
 		Point size = new Point();
@@ -83,43 +79,25 @@ public class NL1 extends Activity {
 
 				canvas.translate(x, y);
 
-				if (mTouching && (next % 5 == 0)) 
+				if (mTouching && (next % 3 == 0)) 
 				{
 					vx = 1;
 					vy = 1;
-					media[click].stop();
-					media[click].release();
+					x = 0;
+					y = 0;
 					click++;
 					if (click <= 9) {
-						media[click] = MediaPlayer.create(
-								getApplicationContext(), song[click]);
+						
 						
 						canvas.drawBitmap(mAlpha[click], 0, 0, null);
-						media[click].start();
-						media[click]
-								.setOnCompletionListener(new OnCompletionListener() {
-
-									@Override
-									public void onCompletion(MediaPlayer mp) {
-										mp.reset();
-									}
-								});
+						
 					} else {
 						click = 0;
-						media[click] = MediaPlayer.create(
-								getApplicationContext(), song[click]);
+						
 					}
 				} else {
 					canvas.drawBitmap(mAlpha[click], 0, 0, null);
-					media[click].start();
-					media[click]
-							.setOnCompletionListener(new OnCompletionListener() {
-
-								@Override
-								public void onCompletion(MediaPlayer mp) {
-									mp.reset();
-								}
-							});
+					
 				}
 
 				Random rw = new Random();
@@ -135,13 +113,13 @@ public class NL1 extends Activity {
 						|| (y <= -1)) {
 					vy = -vy;
 				} 
-				else {vy = vy + rHeight * 0.3f;}
+				else {vy = vy + rHeight * 0.4f;}
 
 				if ((x + 2 * mAlphaHwidth[0] + 1 >= this.getWidth())
 						|| (x <= -1)) {
 					vx = -vx;
 				} 
-				else {vx = vx + rWidth * 0.4f;}
+				else {vx = vx + rWidth * 0.5f;}
 
 				postInvalidateDelayed(2);
 			}
@@ -152,6 +130,7 @@ public class NL1 extends Activity {
 
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
+				
 				int action = event.getAction();
 				if (action == MotionEvent.ACTION_DOWN) {
 					mTouching = true;
