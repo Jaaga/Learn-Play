@@ -3,10 +3,8 @@ package com.jaaga.learnnplay;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 public class NumberLevels extends Activity {
@@ -16,7 +14,7 @@ public class NumberLevels extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_number_levels);
 		
-		ImageButton l1 = (ImageButton) findViewById(R.id.ImageButton1);
+		ImageButton l1 = (ImageButton) findViewById(R.id.level1);
 		l1.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -36,12 +34,4 @@ public class NumberLevels extends Activity {
 		finish();
 	}
 	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.number_levels, menu);
-		return true;
-	}
-	
-
 }

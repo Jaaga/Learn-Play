@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jaaga.learnnplay"
-    android:versionCode="2"
-    android:versionName="1.0" >
+    android:versionCode="3"
+    android:versionName="1.1" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="13"
         android:targetSdkVersion="20" />
 
     <application
@@ -15,7 +15,7 @@
         android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen" >
         <activity
             android:name="com.jaaga.learnnplay.MainActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,32 +24,29 @@
         </activity>
         <activity
             android:name="com.jaaga.learnnplay.Al1"
-            android:label="@string/title_activity_alphabets_word">
+            android:label="@string/title_activity_alphabets_word" >
         </activity>
         <activity
             android:name="com.jaaga.learnnplay.AlphabetsLevels"
-            android:label="@string/title_activity_alphabets_levels">
+            android:label="@string/title_activity_alphabets_levels" >
         </activity>
         <activity
             android:name="com.jaaga.learnnplay.NumberLevels"
-            android:label="@string/title_activity_number_levels">
+            android:label="@string/title_activity_number_levels" >
         </activity>
         <activity
             android:name="com.jaaga.learnnplay.NL1"
-            android:label="@string/title_activity_numbers">
-        </activity>
-        <activity
-            android:name="com.jaaga.learnnplay.Al2"
-            android:label="@string/title_activity_al2">
-        </activity>
-        <activity
-            android:name="com.jaaga.learnnplay.SettingsActivity"
-            android:label="@string/app_name" >
+            android:label="@string/title_activity_numbers" >
         </activity>
         <activity
             android:name="com.jaaga.learnnplay.PaintMe"
             android:label="@string/title_activity_paint_me"
             android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.jaaga.learnnplay.Al2"
+            android:label="@string/title_activity_al2"
+            android:screenOrientation="landscape" >
         </activity>
     </application>
 

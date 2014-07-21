@@ -6,20 +6,12 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Point;
 import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
-import android.os.SystemClock;
-import android.support.v4.view.MotionEventCompat;
 import android.util.Log;
-import android.view.Display;
-import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.widget.Button;
 import android.widget.Toast;
 
 public class Al1 extends Activity {
@@ -41,37 +33,24 @@ public class Al1 extends Activity {
 			R.raw.s, R.raw.t, R.raw.u, R.raw.v, R.raw.w, R.raw.x, R.raw.y,
 			R.raw.z };
 
-	private Bitmap mBitmap;
 	private Bitmap[] mAlpha = new Bitmap[26];
 	private int[] mAlphaHwidth = new int[26];
 	private int[] mAlphaHheight = new int[26];
 	private Bitmap mBG;
-	private Paint p;
 	private float x = 0;
 	private float y = 0;
 	private float vx = 1;
 	private float vy = 1;
-	private Canvas c;
-	private static final String TAG = "MainActivity";
 	private boolean mTouching;
-	private Button btn;
-	private static int next = 0;
+	private Random rand;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
+		rand = new Random();
 		Toast.makeText(this, "Tab to screen 3 times for next Alphabet", Toast.LENGTH_SHORT).show();
 		media[click] = MediaPlayer.create(this, song[click]);
-		btn = new Button(this);
-
-		Display display = getWindowManager().getDefaultDisplay();
-		Point size = new Point();
-		display.getSize(size);
-		final int width = size.x;
-		final int height = size.y;
-
-		mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 
 		mBG = BitmapFactory.decodeResource(getResources(), R.drawable.bg);
 		for (int i = 0; i < 26; i++) {
@@ -79,9 +58,6 @@ public class Al1 extends Activity {
 			mAlphaHwidth[i] = mAlpha[i].getWidth() / 2;
 			mAlphaHheight[i] = mAlpha[i].getHeight() / 2;
 		}
-
-		c = new Canvas(mBitmap);
-		p = new Paint();
 
 		View v = new View(this) {
 
@@ -93,18 +69,25 @@ public class Al1 extends Activity {
 				canvas.scale(ScaleX, ScaleY);
 				canvas.drawBitmap(mBG, 0, 0, null);
 
-				btn.draw(canvas);
 				canvas.restore();
 
 				canvas.translate(x, y);
 
-				if (mTouching && (next % 3 == 0)) {
+				if (mTouching) {
+					
 					vx = 1;
 					vy = 1;
 					x = 0;
 					y = 0;
 					media[click].stop();
 					media[click].release();
+					
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						Log.e("MainActivity", "EXCEPTION "+e);
+					}
+					
 					click++;
 					if (click <= 25) {
 						media[click] = MediaPlayer.create(
@@ -112,14 +95,7 @@ public class Al1 extends Activity {
 						
 						canvas.drawBitmap(mAlpha[click], 0, 0, null);
 						media[click].start();
-						media[click]
-								.setOnCompletionListener(new OnCompletionListener() {
-
-									@Override
-									public void onCompletion(MediaPlayer mp) {
-										mp.reset();
-									}
-								});
+						
 					} else {
 						click = 0;
 						media[click] = MediaPlayer.create(
@@ -127,24 +103,11 @@ public class Al1 extends Activity {
 					}
 				} else {
 					canvas.drawBitmap(mAlpha[click], 0, 0, null);
-
-					media[click]
-							.setOnCompletionListener(new OnCompletionListener() {
-
-								@Override
-								public void onCompletion(MediaPlayer mp) {
-									mp.reset();
-
-								}
-							});
 					media[click].start();
 				}
 				
-				Random rw = new Random();
-				final int rWidth = rw.nextInt(3);
-
-				Random rh = new Random();
-				final int rHeight = rh.nextInt(3);
+				final int rWidth = rand.nextInt(3);
+				final int rHeight = rand.nextInt(3);
 
 				x = x + vx;
 				y = y + vy;
@@ -152,12 +115,12 @@ public class Al1 extends Activity {
 				if ((y + 2 * mAlphaHheight[0] - 1 >= this.getHeight())
 						|| (y <= -1)) {
 					vy = -vy;
-				} else {vy = vy + rHeight *0.4f;}
+				} else {vy = vy + rHeight *0.3f;}
 
 				if ((x + 2 * mAlphaHwidth[0] + 1 >= this.getWidth())
 						|| (x <= -1)) {
 					vx = -vx;
-				} else {vx = vx + rWidth *0.5f;}
+				} else {vx = vx + rWidth *0.4f;}
 
 				postInvalidateDelayed(2);
 			}
@@ -171,7 +134,6 @@ public class Al1 extends Activity {
 				int action = event.getAction();
 				if (action == MotionEvent.ACTION_DOWN) {
 					mTouching = true;
-					next++;
 				}
 				if (action == MotionEvent.ACTION_UP
 						|| action == MotionEvent.ACTION_CANCEL
@@ -188,15 +150,26 @@ public class Al1 extends Activity {
 
 	@Override
 	public void onBackPressed() {
-		// TODO Auto-generated method stub
 		super.onBackPressed();
+		media[click].pause();
 		finish();
+	}
+	
+	@Override
+	protected void onResume() {
+		super.onResume();
+		media[click].start();
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.alphabets_word, menu);
-		return true;
+	protected void onPause() {
+		super.onPause();
+		media[click].pause();
+	}
+	
+	@Override
+	protected void onStop() {
+		super.onStop();
+		media[click].stop();
 	}
 }

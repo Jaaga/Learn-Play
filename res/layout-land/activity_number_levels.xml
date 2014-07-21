@@ -6,7 +6,7 @@
     android:background="@drawable/bg2" >
 
     <ImageButton
-        android:id="@+id/ImageButton1"
+        android:id="@+id/level1"
         android:layout_width="220dp"
         android:layout_height="150dp"
         android:layout_alignParentTop="true"
@@ -17,11 +17,11 @@
         android:src="@drawable/level1" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/level2"
         android:layout_width="220dp"
         android:layout_height="150dp"
-        android:layout_alignLeft="@+id/ImageButton1"
-        android:layout_below="@+id/ImageButton1"
+        android:layout_alignLeft="@+id/level1"
+        android:layout_below="@+id/level1"
         android:layout_marginTop="24dp"
         android:background="@null"
         android:scaleType="fitXY"

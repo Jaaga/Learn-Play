@@ -3,7 +3,6 @@ package com.jaaga.learnnplay;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -15,8 +14,8 @@ public class AlphabetsLevels extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_alphabets_levels);
 		
-		ImageButton l1 = (ImageButton) findViewById(R.id.ImageButton1);
-		ImageButton l2 = (ImageButton) findViewById(R.id.imageButton2);
+		ImageButton l1 = (ImageButton) findViewById(R.id.level1);
+		ImageButton l2 = (ImageButton) findViewById(R.id.level2);
 		
 		l1.setOnClickListener(new OnClickListener() {
 			
@@ -28,7 +27,7 @@ public class AlphabetsLevels extends Activity {
 			}
 		});
 		
-		/*l2.setOnClickListener(new OnClickListener() {
+		l2.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -36,7 +35,7 @@ public class AlphabetsLevels extends Activity {
 				intent.setClass(getApplicationContext(), Al2.class);
 				startActivity(intent);
 			}
-		});*/
+		});
 	}
 
 	@Override
@@ -45,12 +44,4 @@ public class AlphabetsLevels extends Activity {
 		super.onBackPressed();
 		finish();
 	}
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.alphabets_levels, menu);
-		return true;
-	}
-
 }

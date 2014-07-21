@@ -12,7 +12,6 @@ import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,7 +25,6 @@ public class PaintMe extends Activity {
 	private Bitmap mBitmap;
 	private Paint p;
 	private Canvas c;
-	private static final String TAG = "MainActivity";
 	private static String mAlphaName = "";
 	private SensorManager mSensorManager;
 	private Sensor mAccelerometer;
@@ -105,7 +103,6 @@ public class PaintMe extends Activity {
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
 		super.onResume();
 		mSensorManager.registerListener(mShakeDetector, mAccelerometer,
 				SensorManager.SENSOR_DELAY_NORMAL);
@@ -114,14 +111,12 @@ public class PaintMe extends Activity {
 
 	@Override
 	protected void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
 		mSensorManager.unregisterListener(mShakeDetector);
 	}
 
 	@Override
 	public void onBackPressed() {
-		// TODO Auto-generated method stub
 		super.onBackPressed();
 		finish();
 

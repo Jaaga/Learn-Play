@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-    <CheckBoxPreference android:title="Enable Gravity" android:key="gravity" android:summary="Alphabets fall to the floor"/>
-    <EditTextPreference android:key="name" android:summary="Name of the Alphabet to displayed" android:title="Name of Alphabet"/>
-    
-
-</PreferenceScreen>

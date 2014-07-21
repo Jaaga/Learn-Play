@@ -17,7 +17,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 
 		ImageButton alphabets = (ImageButton) findViewById(R.id.imageButton1);
-		ImageButton numbers = (ImageButton) findViewById(R.id.imageButton2);
+		ImageButton numbers = (ImageButton) findViewById(R.id.level2);
 		ImageButton paint = (ImageButton) findViewById(R.id.imageButton3);
 
 		alphabets.setOnClickListener(new OnClickListener() {
@@ -62,9 +62,7 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			Intent i = new Intent(this, SettingsActivity.class);
-			startActivity(i);
+		if (id == R.id.action_settings){
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
