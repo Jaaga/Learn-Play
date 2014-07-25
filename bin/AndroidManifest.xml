@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jaaga.learnnplay"
-    android:versionCode="4"
-    android:versionName="1.1" >
+    android:versionCode="5"
+    android:versionName="1.2" >
 
     <uses-sdk
-        android:minSdkVersion="11"
+        android:minSdkVersion="13"
         android:targetSdkVersion="20" />
 
     <application
@@ -40,7 +40,7 @@
         </activity>
         <activity
             android:name="com.jaaga.learnnplay.PaintMe"
-            android:label="@string/title_activity_paint_me" android:screenOrientation="portrait">
+            android:label="@string/title_activity_paint_me" android:screenOrientation="landscape">
         </activity>
         <activity
             android:name="com.jaaga.learnnplay.Quiz_alphabets"

@@ -57,7 +57,7 @@ public class PaintMe extends Activity {
 
 				c.drawColor(0, Mode.CLEAR);
 				p.reset();
-				c.drawText(mAlphaName, width / 5, height / 1.7f, p);
+				c.drawText(mAlphaName, width / 10, height / 1.3f, p);
 			}
 		});
 
@@ -71,13 +71,13 @@ public class PaintMe extends Activity {
 
 				p.setTextSize(60);
 				p.setColor(0xff000000);
-				canvas.drawText("Shake to Clear", width / 3.5f, 50, p);
+				canvas.drawText("Shake to Clear", width / 3f, 50, p);
 
 				p.setStyle(Paint.Style.STROKE);
 				p.setStrokeWidth(4);
 				p.setColor(0xff000000);
-				p.setTextSize(height / 2f);
-				canvas.drawText(mAlphaName, width / 5, height / 1.7f, p);
+				p.setTextSize(height / 1.09f);
+				canvas.drawText(mAlphaName, width/ 10f, height / 1.3f, p);
 
 				postInvalidateDelayed(0);
 			}
