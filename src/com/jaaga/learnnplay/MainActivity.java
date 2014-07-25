@@ -3,8 +3,6 @@ package com.jaaga.learnnplay;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -16,26 +14,26 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		ImageButton alphabets = (ImageButton) findViewById(R.id.imageButton1);
-		ImageButton numbers = (ImageButton) findViewById(R.id.level2);
-		ImageButton paint = (ImageButton) findViewById(R.id.imageButton3);
+		ImageButton learn = (ImageButton) findViewById(R.id.resume);
+		ImageButton quiz = (ImageButton) findViewById(R.id.Quiz_fruits);
+		ImageButton paint = (ImageButton) findViewById(R.id.option1);
 
-		alphabets.setOnClickListener(new OnClickListener() {
+		learn.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(getApplicationContext(), AlphabetsLevels.class);
+				intent.setClass(getApplicationContext(), Learn_Levels.class);
 				startActivity(intent);
 			}
 		});
 
-		numbers.setOnClickListener(new OnClickListener() {
+		quiz.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(getApplicationContext(), NumberLevels.class);
+				intent.setClass(getApplicationContext(), Quiz_Levels.class);
 				startActivity(intent);
 			}
 		});
@@ -51,21 +49,4 @@ public class MainActivity extends Activity {
 		});
 
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		int id = item.getItemId();
-		if (id == R.id.action_settings){
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
 }
