@@ -25,12 +25,15 @@ public final class Constants {
 		R.raw.z };
 	
 	public static final int[] fruitsPhotos = new int[]{R.drawable.apple,R.drawable.banana,R.drawable.grape,R.drawable.kiwi,
-		R.drawable.orange,R.drawable.pear,R.drawable.pineapple,R.drawable.strawberry};
+		R.drawable.orange,R.drawable.pear,R.drawable.pineapple,R.drawable.strawberry,R.drawable.cucumber,
+		R.drawable.papaya,R.drawable.raspberry,R.drawable.tamato};
 	
 	public static final int[] fruitsSound = new int[]{R.raw.apple,R.raw.banana,R.raw.grape,R.raw.kiwi,
-		R.raw.orange,R.raw.pear,R.raw.pineapple,R.raw.strawberry};
+		R.raw.orange,R.raw.pear,R.raw.pineapple,R.raw.strawberry,R.raw.cucumber,
+		R.raw.papaya,R.raw.raspberry,R.raw.tomato};
 	
-	public static String[] fruitNames ={"Apple","Banana","Grape","Kiwi","Orange","Pear","Pineapple","Strawberry"};
+	public static String[] fruitNames ={"Apple","Banana","Grape","Kiwi","Orange","Pear","Pineapple","Strawberry",
+		"Cucumber","Papaya","Raspberry","Tomato"};
 	
 	public static String[] numberNames = {"One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten"};
 	

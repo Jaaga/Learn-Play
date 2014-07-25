@@ -52,7 +52,8 @@ public class Quiz_alphabets extends Activity {
 					clapmedia();
 					shuffle();
 				} else {
-
+					wrong();
+					shuffle();
 				}
 			}
 		});
@@ -65,7 +66,8 @@ public class Quiz_alphabets extends Activity {
 					clapmedia();
 					shuffle();
 				} else {
-
+					wrong();
+					shuffle();
 				}
 			}
 		});
@@ -78,7 +80,8 @@ public class Quiz_alphabets extends Activity {
 					clapmedia();
 					shuffle();
 				} else {
-
+					wrong();
+					shuffle();
 				}
 			}
 		});
@@ -91,7 +94,8 @@ public class Quiz_alphabets extends Activity {
 					clapmedia();
 					shuffle();
 				} else {
-
+					wrong();
+					shuffle();
 				}
 			}
 		});
@@ -99,9 +103,8 @@ public class Quiz_alphabets extends Activity {
 	
 	private void shuffle() 
 	{
-		
 		try {
-			Thread.sleep(1020);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			Log.e("Quiz", "Exception "+e);
 		}
@@ -166,6 +169,19 @@ public class Quiz_alphabets extends Activity {
 	
 	private void clapmedia() {
 		media = MediaPlayer.create(Quiz_alphabets.this, R.raw.clap);
+		media.start();
+
+		media.setOnCompletionListener(new OnCompletionListener() {
+
+			@Override
+			public void onCompletion(MediaPlayer mp) {
+				mp.release();
+			}
+		});
+	}
+	
+	private void wrong() {
+		media = MediaPlayer.create(Quiz_alphabets.this, R.raw.wrong);
 		media.start();
 
 		media.setOnCompletionListener(new OnCompletionListener() {
