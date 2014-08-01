@@ -13,5 +13,6 @@
     <string name="title_activity_learn__fruits">Learn_Fruits</string>
     <string name="title_activity_quiz_fruits">Quiz_fruits</string>
     <string name="fruit_hint">Enter the Fruit Name</string>
+    <string name="title_activity_game_selection">Game_selection</string>
 
 </resources>

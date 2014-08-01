@@ -88,21 +88,22 @@ public final class R {
         public static final int z=0x7f02003b;
     }
     public static final class id {
-        public static final int Learn_fruits=0x7f080002;
-        public static final int Quiz_alphabets=0x7f080001;
-        public static final int Quiz_fruits=0x7f080000;
-        public static final int editText1=0x7f08000d;
-        public static final int fruit_image=0x7f08000c;
-        public static final int fruitname=0x7f080003;
-        public static final int fruits=0x7f080004;
-        public static final int next=0x7f080005;
-        public static final int next_fruit=0x7f08000e;
-        public static final int option1=0x7f080008;
-        public static final int option2=0x7f08000a;
-        public static final int option3=0x7f08000b;
-        public static final int option4=0x7f080009;
-        public static final int previous=0x7f080006;
-        public static final int resume=0x7f080007;
+        public static final int Learn_fruits=0x7f090002;
+        public static final int Quiz_alphabets=0x7f090001;
+        public static final int Quiz_fruits=0x7f090000;
+        public static final int action_settings=0x7f09000f;
+        public static final int editText1=0x7f09000d;
+        public static final int fruit_image=0x7f09000c;
+        public static final int fruitname=0x7f090003;
+        public static final int fruits=0x7f090004;
+        public static final int next=0x7f090005;
+        public static final int next_fruit=0x7f09000e;
+        public static final int option1=0x7f090008;
+        public static final int option2=0x7f09000a;
+        public static final int option3=0x7f09000b;
+        public static final int option4=0x7f090009;
+        public static final int previous=0x7f090006;
+        public static final int resume=0x7f090007;
     }
     public static final class layout {
         public static final int activity_alphabets_word=0x7f030000;
@@ -113,6 +114,9 @@ public final class R {
         public static final int activity_quiz=0x7f030005;
         public static final int activity_quiz_alphabets=0x7f030006;
         public static final int activity_quiz_fruits=0x7f030007;
+    }
+    public static final class menu {
+        public static final int game_selection=0x7f080000;
     }
     public static final class raw {
         public static final int a=0x7f040000;
@@ -171,6 +175,7 @@ public final class R {
         public static final int app_name=0x7f060000;
         public static final int fruit_hint=0x7f06000b;
         public static final int hello_world=0x7f060003;
+        public static final int title_activity_game_selection=0x7f06000c;
         public static final int title_activity_learn__fruits=0x7f060009;
         public static final int title_activity_learn_alphabets=0x7f060002;
         public static final int title_activity_learn_levels=0x7f060004;
