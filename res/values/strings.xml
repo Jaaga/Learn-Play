@@ -14,5 +14,6 @@
     <string name="title_activity_quiz_fruits">Quiz_fruits</string>
     <string name="fruit_hint">Enter the Fruit Name</string>
     <string name="title_activity_game_selection">Game_selection</string>
+    <string name="banner_ad_unit_id">ca-app-pub-2536093602777959/1275855021</string>
 
 </resources>

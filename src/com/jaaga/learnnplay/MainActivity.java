@@ -1,16 +1,16 @@
 package com.jaaga.learnnplay;
 
-import com.jaaga.learnnplay.learn.Learn_Levels;
-import com.jaaga.learnnplay.paint.PaintMe;
-import com.jaaga.learnnplay.quiz.Quiz_Levels;
-import com.purplebrain.adbuddiz.sdk.AdBuddiz;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+
+import com.jaaga.learnnplay.learn.Learn_Levels;
+import com.jaaga.learnnplay.paint.PaintMe;
+import com.jaaga.learnnplay.quiz.Quiz_Levels;
+import com.purplebrain.adbuddiz.sdk.AdBuddiz;
 
 public class MainActivity extends Activity {
 

@@ -34,7 +34,7 @@
         android:layout_height="150dp"
         android:layout_below="@+id/Quiz_fruits"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="13dp"
         android:background="@null"
         android:scaleType="fitXY"
         android:src="@drawable/paintme" />
