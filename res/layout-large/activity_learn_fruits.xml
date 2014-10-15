@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg2"
+    tools:context=".Learn_Fruits" >
+
+    <ImageView
+        android:id="@+id/fruits"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp" />
+
+    <ImageButton
+        android:id="@+id/next"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignBottom="@+id/fruitname"
+        android:scaleType="fitXY"
+        android:layout_toRightOf="@+id/fruits"
+        android:background="@null"
+        android:src="@drawable/next" />
+
+    <ImageButton
+        android:id="@+id/previous"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignTop="@+id/next"
+        android:layout_toLeftOf="@+id/fruits"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/previous" />
+
+    <TextView
+        android:id="@+id/fruitname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fruits"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:textColor="#0c64e8"
+        android:text="kdjckdsnjksn"
+        android:textSize="35sp" />
+
+</RelativeLayout>

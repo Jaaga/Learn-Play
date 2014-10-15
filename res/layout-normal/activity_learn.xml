@@ -1,0 +1,42 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Learn_Levels"
+    android:background="@drawable/bg2" >
+
+    <ImageButton
+        android:id="@+id/Quiz_fruits"
+        android:layout_width="220dp"
+        android:layout_height="150dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/Quiz_alphabets"
+        android:layout_marginRight="71dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/numbers" />
+
+    <ImageButton
+        android:id="@+id/Quiz_alphabets"
+        android:layout_width="220dp"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@+id/Quiz_fruits"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/alphabets" />
+
+    <ImageButton
+        android:id="@+id/Learn_fruits"
+        android:layout_width="220dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/Quiz_fruits"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="36dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/fruits" />
+
+</RelativeLayout>
