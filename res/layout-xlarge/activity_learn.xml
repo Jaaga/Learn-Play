@@ -6,23 +6,11 @@
     android:background="@drawable/bg2" >
 
     <ImageButton
-        android:id="@+id/Learn_fruits"
-        android:layout_width="340dp"
-        android:layout_height="270dp"
-        android:layout_below="@+id/Quiz_fruits"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:background="@null"
-        android:scaleType="fitXY"
-        android:src="@drawable/fruits" />
-
-    <ImageButton
         android:id="@+id/Quiz_fruits"
         android:layout_width="340dp"
         android:layout_height="270dp"
-        android:layout_alignLeft="@+id/Learn_fruits"
         android:layout_alignTop="@+id/Quiz_alphabets"
-        android:layout_marginLeft="233dp"
+        android:layout_toRightOf="@+id/Learn_fruits"
         android:background="@null"
         android:scaleType="fitXY"
         android:src="@drawable/numbers" />
@@ -31,12 +19,21 @@
         android:id="@+id/Quiz_alphabets"
         android:layout_width="340dp"
         android:layout_height="270dp"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="216dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="66dp"
+        android:layout_toLeftOf="@+id/Learn_fruits"
         android:background="@null"
         android:scaleType="fitXY"
         android:src="@drawable/alphabets" />
+
+    <ImageButton
+        android:id="@+id/Learn_fruits"
+        android:layout_width="340dp"
+        android:layout_height="270dp"
+        android:layout_below="@+id/Quiz_fruits"
+        android:layout_centerHorizontal="true"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:src="@drawable/fruits" />
 
 </RelativeLayout>

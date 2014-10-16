@@ -22,7 +22,7 @@
         android:layout_height="160dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="62dp"
         android:background="@null"
         android:scaleType="fitXY"
         android:src="@drawable/alphabets" />
