@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg2"
@@ -21,7 +22,7 @@
         android:layout_alignLeft="@+id/fruit_image"
         android:layout_alignRight="@+id/fruit_image"
         android:layout_below="@+id/fruit_image"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="35dp"
         android:ems="10"
         android:hint="@string/fruit_hint"
         android:textSize="22sp" />
@@ -35,5 +36,15 @@
         android:layout_toRightOf="@+id/editText1"
         android:src="@drawable/next"
         android:background="@null" />
+    
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
     
 </RelativeLayout>

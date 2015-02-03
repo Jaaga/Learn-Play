@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.jaaga.learnnplay.Constants;
 import com.jaaga.learnnplay.R;
 
@@ -36,6 +38,10 @@ public class Quiz_alphabets extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_quiz_alphabets);
 
+		AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+		
 		resume = (ImageButton) findViewById(R.id.resume);
 
 		op1 = (ImageButton) findViewById(R.id.option1);

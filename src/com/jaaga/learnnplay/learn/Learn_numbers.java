@@ -9,6 +9,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.jaaga.learnnplay.Constants;
 import com.jaaga.learnnplay.R;
 
@@ -23,6 +25,11 @@ public class Learn_numbers extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_learn_fruits);
+		
+		AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        
 		numbers = (ImageView) findViewById(R.id.fruits);
 		ImageButton next = (ImageButton) findViewById(R.id.next);
 		ImageButton previous = (ImageButton) findViewById(R.id.previous);

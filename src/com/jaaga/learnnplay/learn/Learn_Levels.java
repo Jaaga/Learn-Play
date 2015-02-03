@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.jaaga.learnnplay.R;
 import com.purplebrain.adbuddiz.sdk.AdBuddiz;
 
@@ -17,6 +19,9 @@ public class Learn_Levels extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_learn);
 		
+		AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 		AdBuddiz.showAd(this);
 		
 		ImageButton alphabets = (ImageButton) findViewById(R.id.Quiz_alphabets);

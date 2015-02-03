@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.jaaga.learnnplay.R;
 
 public class Quiz_Levels extends Activity {
@@ -15,6 +17,10 @@ public class Quiz_Levels extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_quiz);
+		
+		AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 		
 		ImageButton alphabets = (ImageButton) findViewById(R.id.Quiz_alphabets);
 		ImageButton fruits = (ImageButton) findViewById(R.id.Quiz_fruits);

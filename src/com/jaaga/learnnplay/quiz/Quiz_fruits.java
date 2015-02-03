@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.jaaga.learnnplay.Constants;
 import com.jaaga.learnnplay.R;
 
@@ -27,6 +29,10 @@ public class Quiz_fruits extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_quiz_fruits);
+		
+		AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 		
 		fruit = (ImageView) findViewById(R.id.fruit_image);
 		ImageButton next = (ImageButton) findViewById(R.id.next_fruit);

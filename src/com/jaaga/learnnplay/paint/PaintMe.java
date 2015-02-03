@@ -19,7 +19,6 @@ import android.view.View.OnTouchListener;
 import android.widget.EditText;
 
 import com.jaaga.learnnplay.paint.ShakeDetector.OnShakeListener;
-import com.purplebrain.adbuddiz.sdk.AdBuddiz;
 
 public class PaintMe extends Activity {
 
