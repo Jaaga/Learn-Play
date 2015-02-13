@@ -13,15 +13,20 @@ import com.jaaga.learnnplay.learn.Learn_Levels;
 import com.jaaga.learnnplay.paint.PaintMe;
 import com.jaaga.learnnplay.quiz.Quiz_Levels;
 import com.purplebrain.adbuddiz.sdk.AdBuddiz;
+import com.startapp.android.publish.StartAppAd;
+import com.startapp.android.publish.StartAppSDK;
 
 public class MainActivity extends Activity {
 
 	private AdView mAdView;
+	StartAppAd startAppAd = new StartAppAd(this);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		StartAppSDK.init(this, "102735663", "202424305", true);
 		setContentView(R.layout.activity_main);
+		
 		
 		mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -72,6 +77,7 @@ public class MainActivity extends Activity {
         if (mAdView != null) {
             mAdView.pause();
         }
+        startAppAd.onPause();
         super.onPause();
     }
 
@@ -82,6 +88,7 @@ public class MainActivity extends Activity {
         if (mAdView != null) {
             mAdView.resume();
         }
+        startAppAd.onResume();
     }
 
     /** Called before the activity is destroyed */
@@ -90,6 +97,15 @@ public class MainActivity extends Activity {
         if (mAdView != null) {
             mAdView.destroy();
         }
+        
         super.onDestroy();
+    }
+    
+    @Override
+    public void onBackPressed() {
+        startAppAd.onBackPressed();
+        startAppAd.showAd(); // show the ad
+        startAppAd.loadAd(); // load the next ad
+        super.onBackPressed();
     }
 }

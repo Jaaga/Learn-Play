@@ -19,6 +19,7 @@ import android.view.View.OnTouchListener;
 import android.widget.EditText;
 
 import com.jaaga.learnnplay.paint.ShakeDetector.OnShakeListener;
+import com.startapp.android.publish.StartAppAd;
 
 public class PaintMe extends Activity {
 
@@ -30,6 +31,8 @@ public class PaintMe extends Activity {
 	private Sensor mAccelerometer;
 	private ShakeDetector mShakeDetector;
 
+	StartAppAd startAppAd = new StartAppAd(this);
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -106,18 +109,22 @@ public class PaintMe extends Activity {
 		super.onResume();
 		mSensorManager.registerListener(mShakeDetector, mAccelerometer,
 				SensorManager.SENSOR_DELAY_NORMAL);
-
+		startAppAd.onResume();
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
 		mSensorManager.unregisterListener(mShakeDetector);
+		startAppAd.onPause();
 	}
 
 	@Override
 	public void onBackPressed() {
 		super.onBackPressed();
+		startAppAd.onBackPressed();
+        startAppAd.showAd(); // show the ad
+        startAppAd.loadAd(); // load the next ad
 		finish();
 
 	}
